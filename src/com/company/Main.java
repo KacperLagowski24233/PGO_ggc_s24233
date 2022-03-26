@@ -50,23 +50,61 @@ public class Main {
         System.out.println(Arrays.toString(arr));
 
         //Zadanie 7
-        System.out.print("\n");
-        System.out.print("Podaj liczbę: ");
-        int n = Integer.parseInt(sc.nextLine());
+        boolean inputValid;
+        int n;
 
-        while(n > 5 || n % 2 == 0)
-        {
-            System.out.print("Liczba jest mniejsza niż 5 lub jest parzysta!");
-            System.out.print("Wprowadź liczbę jeszcze raz: ");
-            n = Integer.parseInt(sc.nextLine());
+        System.out.println("Podaj liczbę która jest niepatzysta i większa od 5: ");
+
+        do{
+            Scanner scan = new Scanner(System.in);
+            n = scan.nextInt();
+            System.out.println("Podana liczba nie jest prawidłowa");
+
+            if((n > 5) && (n%2!=0))
+            {
+                inputValid = true;
+            }
+            else
+            {
+                inputValid = false;
+            }
         }
+        while(inputValid == false);
 
-        for(int i = 1;i <= n;i++)
-        {
-            System.out.print("");
-        }
-
+        GenerateImage(n);
     }
+
+    static void GenerateImage(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            System.out.print(" * ");
+        }
+        System.out.println();
+        for (int i = 0; i < number - 2; i++)
+        {
+            System.out.print(" * ");
+            for (int j = 0; j < number - 2; j++)
+            {
+                if(i==j)
+                {
+                    System.out.print(" * ");
+                }
+                else
+                {
+                    System.out.print("   ");
+                }
+            }
+            System.out.println(" * ");
+        }
+        for (int i = 0; i < number; i++)
+        {
+            System.out.print(" * ");
+        }
+        System.out.println();
+    }
+
+
 
     public static int getMin(int[] inputArray){
         int minValue = inputArray[0];
